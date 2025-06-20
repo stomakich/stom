@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Интерактивная карта Казанского вокзала</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-train"></i> Интерактивная карта Казанского вокзала</h1>
+            <div class="floor-tabs">
+                <button class="floor-tab active" data-floor="1" data-default-area="main-hall">1 этаж</button>
+                <button class="floor-tab" data-floor="2" data-default-area="restaurant">2 этаж</button>
+                <button class="floor-tab" data-floor="3" data-default-area="viewpoint">3 этаж</button>
+            </div>
+        </header>
+
+        <div class="map-container">
+            <div class="station-map">
+                <!-- Карта 1 этажа -->
+                <div class="floor-map active" data-floor="1">
+                    <img src="img/floor(1).png" alt="1 этаж" class="map-img" usemap="#floor1" />
+                    <map name="floor1">
+                        <area shape="rect" coords="50,230,170,350" data-title="Кассовая зона"
+                            data-desc="Зона продажи билетов на поезда дальнего следования."
+                            data-img="img/ticket-office.jpg" data-hours="8:00-20:00" id="ticket-office" />
+                        <area shape="rect" coords="120,85,320,220" data-title="Главный зал"
+                            data-desc="Центральный зал вокзала с кассами и зоной ожидания." data-img="img/main-hall.jpg"
+                            data-hours="Круглосуточно" id="main-hall" />
+                        <area shape="rect" coords="600,100,750,300" data-title="Железнодорожные пути"
+                            data-desc="Платформы для отправления и прибытия поездов." data-img="img/tracks.jpg"
+                            data-hours="Круглосуточно" id="tracks" />
+                    </map>
+                </div>
+
+                <!-- Карта 2 этажа -->
+                <div class="floor-map" data-floor="2">
+                    <img src="img/floor(2).png" alt="2 этаж" class="map-img" usemap="#floor2" />
+                    <map name="floor2">
+                        <area shape="rect" coords="20,100,150,250" data-title="Привокзальная площадь"
+                            data-desc="Внешняя территория перед вокзалом." data-img="img/station-square.jpg"
+                            data-hours="Круглосуточно" id="station-square" />
+                        <area shape="circle" coords="200,180,60" data-title="Ресторан" id="restaurant"
+                            data-desc="Ресторан с панорамным видом на платформы." data-img="img/restaurant.jpg"
+                            data-hours="10:00-22:00" />
+                        <area shape="rect" coords="200,250,400,350" data-title="Фудкорт"
+                            data-desc="Место питания с разнообразными кафе." data-img="img/food-court.jpg"
+                            data-hours="9:00-22:00" id="food-court" />
+                        <area shape="rect" coords="600,100,750,300" data-title="Железнодорожные пути"
+                            data-desc="Платформы для отправления и прибытия поездов." data-img="img/tracks.jpg"
+                            data-hours="Круглосуточно" id="tracks" />
+                    </map>
+                </div>
+
+                <!-- Карта 3 этажа -->
+                <div class="floor-map" data-floor="3">
+                    <img src="img/floor(3).png" alt="3 этаж" class="map-img" usemap="#floor3" />
+                    <map name="floor3">
+                        <area shape="poly" coords="150,100,250,150,150,200" data-title="Смотровая площадка"
+                            data-desc="Панорамный вид на железнодорожные пути." data-img="img/viewpoint.jpg"
+                            data-hours="8:00-20:00" id="viewpoint" />
+                        <area shape="rect" coords="600,100,750,300" data-title="Железнодорожные пути"
+                            data-desc="Платформы для отправления и прибытия поездов." data-img="img/tracks.jpg"
+                            data-hours="Круглосуточно" id="tracks" />
+                    </map>
+                </div>
+            </div>
+
+            <div class="info-panel">
+                <div class="info-card fade-in">
+                    <div class="info-image-container">
+                        <img id="location-image" src="img/main-hall.jpg" alt="Фото места" />
+                    </div>
+                    <div class="info-text">
+                        <div class="floor-indicator">
+                            <i class="fas fa-layer-group"></i> <span id="current-floor">1</span> этаж
+                        </div>
+                        <h2 id="location-title">Главный зал</h2>
+                        <p id="location-desc">Центральный зал вокзала с кассами и зоной ожидания.</p>
+                        <div class="info-meta">
+                            <i class="fas fa-clock"></i> <span id="location-hours">Круглосуточно</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
